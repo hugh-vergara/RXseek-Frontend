@@ -45,7 +45,7 @@ function Registration() {
                           style={{ width: "185px" }}
                           alt="logo"
                         />
-                        <h4 className="mt-1 mb-5 pb-1">Register</h4>
+                        <h3 className="mt-1 mb-5 pb-1">Register</h3>
                       </div>
 
                       <form>
