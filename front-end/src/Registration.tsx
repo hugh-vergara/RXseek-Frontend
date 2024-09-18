@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Registration() {
   const navigate = useNavigate();
 
-  const handleRegisterClick = () => {
-    navigate("register");
+  const handleLoginClick = () => {
+    navigate("/");
   };
 
   return (
@@ -18,6 +18,25 @@ function Login() {
             <div className="col-xl-10">
               <div className="card rounded-3 text-black">
                 <div className="row g-0">
+                  <div
+                    className="col-lg-6 d-flex align-items-center position-relative"
+                    style={{ height: "100vh", overflow: "hidden" }}
+                  >
+                    <img
+                      src="/mask.jpg"
+                      alt="Background"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        zIndex: 1,
+                      }}
+                    />
+                  </div>
+
                   <div className="col-lg-6">
                     <div className="card-body p-md-5 mx-md-4">
                       <div className="text-center">
@@ -26,37 +45,44 @@ function Login() {
                           style={{ width: "185px" }}
                           alt="logo"
                         />
-                        <h4 className="mt-1 mb-5 pb-1"></h4>
+                        <h4 className="mt-1 mb-5 pb-1">Register</h4>
                       </div>
 
                       <form>
-                        <p>Please login to your account</p>
+                        <p>Please create a new account</p>
+
+                        <div className="form-outline mb-4">
+                          <input
+                            type="text"
+                            id="form2Example1"
+                            className="form-control"
+                            placeholder="Full Name"
+                          />
+                          <label className="form-label" htmlFor="form2Example1">
+                            Full Name
+                          </label>
+                        </div>
 
                         <div className="form-outline mb-4">
                           <input
                             type="email"
-                            id="form2Example11"
+                            id="form2Example2"
                             className="form-control"
-                            placeholder="Phone number or email address"
+                            placeholder="Email Address"
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example11"
-                          >
-                            Username
+                          <label className="form-label" htmlFor="form2Example2">
+                            Email Address
                           </label>
                         </div>
 
                         <div className="form-outline mb-4">
                           <input
                             type="password"
-                            id="form2Example22"
+                            id="form2Example3"
                             className="form-control"
+                            placeholder="Password"
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example22"
-                          >
+                          <label className="form-label" htmlFor="form2Example3">
                             Password
                           </label>
                         </div>
@@ -76,44 +102,24 @@ function Login() {
                               backgroundClip: "padding-box",
                             }}
                           >
-                            Log in
+                            Register
                           </button>
                           <a className="text-muted" href="#!">
-                            Forgot password?
+                            Already have an account?
                           </a>
                         </div>
 
                         <div className="d-flex align-items-center justify-content-center pb-4">
-                          <p className="mb-0 me-2">Don't have an account?</p>
                           <button
                             type="button"
                             className="btn btn-outline-danger"
-                            onClick={handleRegisterClick}
+                            onClick={handleLoginClick}
                           >
-                            Create new
+                            Go to Login
                           </button>
                         </div>
                       </form>
                     </div>
-                  </div>
-
-                  <div
-                    className="col-lg-6 d-flex align-items-center position-relative"
-                    style={{ height: "100vh", overflow: "hidden" }}
-                  >
-                    <img
-                      src="/kangcer.jpg"
-                      alt="Background"
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        zIndex: 1,
-                      }}
-                    />
                   </div>
                 </div>
               </div>
@@ -125,4 +131,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Registration;
