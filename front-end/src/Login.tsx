@@ -37,7 +37,7 @@ function Login() {
                             type="email"
                             id="form2Example11"
                             className="form-control"
-                            placeholder="Phone number or email address"
+                            placeholder="si hugh gwapo"
                           />
                           <label
                             className="form-label"
