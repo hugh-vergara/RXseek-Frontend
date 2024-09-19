@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import Logo from "./assets/rxseek_logo_name.png";
+import Kangcer from "./assets/kangcer.jpg";
 
 function Login() {
   const navigate = useNavigate();
@@ -21,11 +23,7 @@ function Login() {
                   <div className="col-lg-6">
                     <div className="card-body p-md-5 mx-md-4">
                       <div className="text-center">
-                        <img
-                          src="/rxseek_logo_name.png"
-                          style={{ width: "185px" }}
-                          alt="logo"
-                        />
+                        <img src={Logo} style={{ width: "185px" }} alt="logo" />
                         <h4 className="mt-1 mb-5 pb-1"></h4>
                       </div>
 
@@ -102,7 +100,7 @@ function Login() {
                     style={{ height: "100vh", overflow: "hidden" }}
                   >
                     <img
-                      src="/kangcer.jpg"
+                      src={Kangcer}
                       alt="Background"
                       style={{
                         position: "absolute",

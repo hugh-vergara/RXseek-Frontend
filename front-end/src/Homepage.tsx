@@ -1,3 +1,7 @@
+import Logo from "./assets/rxseek_logo_name.png";
+import Upload from "./assets/upload.png";
+import UploadButton from "./assets/upload_button.png";
+
 function Homepage() {
   return (
     <>
@@ -25,7 +29,7 @@ function Homepage() {
                       >
                         <div>
                           <img
-                            src="/rxseek_logo_name.png"
+                            src={Logo}
                             style={{ width: "350px" }}
                             alt="logo"
                           />
@@ -33,14 +37,14 @@ function Homepage() {
                         <div className="d-flex justify-content-between mt-4">
                           <div className="p-3 ">
                             <img
-                              src="/upload.png"
+                              src={Upload}
                               style={{ width: "300px" }}
                               alt="upload"
                             />
                           </div>
                           <div className="p-3 ">
                             <img
-                              src="/upload.png"
+                              src={Upload}
                               style={{ width: "300px" }}
                               alt="upload"
                             />
@@ -49,7 +53,7 @@ function Homepage() {
                         <div className="d-flex justify-content-center">
                           <div className="p-3">
                             <img
-                              src="/upload_button.png"
+                              src={UploadButton}
                               style={{ width: "100px" }}
                               alt="upload_button"
                             />

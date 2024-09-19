@@ -11,7 +11,6 @@ function App() {
 
         <Route path="/register" element={<Registration />} />
         <Route path="/homepage" element={<Homepage />}></Route>
-        {/* Add other routes here */}
       </Routes>
     </Router>
   );

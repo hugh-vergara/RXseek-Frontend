@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import Mask from "./assets/mask.jpg";
+import Logo from "./assets/rxseek_logo_name.png";
 
 function Registration() {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ function Registration() {
                     style={{ height: "100vh", overflow: "hidden" }}
                   >
                     <img
-                      src="/mask.jpg"
+                      src={Mask}
                       alt="Background"
                       style={{
                         position: "absolute",
@@ -40,11 +42,7 @@ function Registration() {
                   <div className="col-lg-6">
                     <div className="card-body p-md-5 mx-md-4">
                       <div className="text-center">
-                        <img
-                          src="/rxseek_logo_name.png"
-                          style={{ width: "185px" }}
-                          alt="logo"
-                        />
+                        <img src={Logo} style={{ width: "185px" }} alt="logo" />
                         <h3 className="mt-1 mb-5 pb-1">Register</h3>
                       </div>
 
