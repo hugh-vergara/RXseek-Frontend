@@ -1,9 +1,33 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Logo from "./assets/rxseek_logo_name.png";
 import Kangcer from "./assets/kangcer.jpg";
+import React, { useState } from "react";
+import { useAuth } from "./context/authContext/index"
+import { doSignInWithEmailAndPassword } from "./firebase/auth";
 
-function Login() {
+function Login(){
   const navigate = useNavigate();
+
+  const { userLoggedIn } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!isSigningIn) {
+      setIsSigningIn(true);
+      try {
+        await doSignInWithEmailAndPassword(email, password);
+        navigate("/Homepage"); 
+      } catch (error) {
+        setErrorMessage("Failed to sign in. Please check your credentials.");
+        console.error(error);
+      }
+      setIsSigningIn(false);
+    }
+  };
 
   const handleRegisterClick = () => {
     navigate("register");
@@ -11,10 +35,8 @@ function Login() {
 
   return (
     <div>
-      <section
-        className="h-100 gradient-form"
-        style={{ backgroundColor: "#eee" }}
-      >
+      {userLoggedIn && <Navigate to={"/Homepage"} replace={true} />}
+      <section className="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-xl-10">
@@ -27,7 +49,7 @@ function Login() {
                         <h4 className="mt-1 mb-5 pb-1"></h4>
                       </div>
 
-                      <form>
+                      <form onSubmit={onSubmit}>
                         <p>Please login to your account</p>
 
                         <div className="form-outline mb-4">
@@ -35,12 +57,11 @@ function Login() {
                             type="email"
                             id="form2Example11"
                             className="form-control"
-                            placeholder="si hugh gwapo"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example11"
-                          >
+                          <label className="form-label" htmlFor="form2Example11">
                             Username
                           </label>
                         </div>
@@ -50,19 +71,21 @@ function Login() {
                             type="password"
                             id="form2Example22"
                             className="form-control"
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
-                          <label
-                            className="form-label"
-                            htmlFor="form2Example22"
-                          >
+                          <label className="form-label" htmlFor="form2Example22">
                             Password
                           </label>
                         </div>
 
+                        {errorMessage && <p className="text-danger">{errorMessage}</p>}
+
                         <div className="text-center pt-1 mb-5 pb-1 d-flex flex-column">
                           <button
                             className="btn btn-block fa-lg mb-3"
-                            type="button"
+                            type="submit" // Change the button type to "submit"
                             style={{
                               background:
                                 "linear-gradient(90deg, hsla(34, 50%, 69%, 1) 0%, hsla(171, 71%, 89%, 1) 85%)",
@@ -73,8 +96,9 @@ function Login() {
                               borderRadius: "5px",
                               backgroundClip: "padding-box",
                             }}
+                            disabled={isSigningIn}
                           >
-                            Log in
+                            {isSigningIn ? "Signing in..." : "Log in"}
                           </button>
                           <a className="text-muted" href="#!">
                             Forgot password?
@@ -121,6 +145,6 @@ function Login() {
       </section>
     </div>
   );
-}
+};
 
 export default Login;
